@@ -1,7 +1,6 @@
 import axios from "axios";
-import { LocalStorageModule } from "@/shared/modules/storage.module";
 
-const basePath = process.env.VITE_ENV_BASE_URL;
+const basePath = import.meta.env.VITE_ENV_BASE_URL;
 
 const privateClient = axios.create({
   baseURL: basePath,
@@ -16,7 +15,8 @@ privateClient.interceptors.request.use(
       ...config,
       headers: {
         "Content-type": "application/json;charset=UTF-8",
-        Authorization: `Bearer ${LocalStorageModule.get("test")}`,
+        "Access-Control-Allow-Origin": "*",
+        Authorization: "Bearer 123",
       },
     };
   },

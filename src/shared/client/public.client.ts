@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const basePath = process.env.VITE_ENV_BASE_URL;
+const basePath = import.meta.env.VITE_ENV_BASE_URL;
 
 const publicClient = axios.create({
   baseURL: basePath,
@@ -9,6 +9,7 @@ const publicClient = axios.create({
 publicClient.interceptors.request.use(async (config) => {
   const headers = {
     "Content-type": "application/json;charset=UTF-8",
+    "Access-Control-Allow-Origin": "*",
   };
   return {
     ...config,
