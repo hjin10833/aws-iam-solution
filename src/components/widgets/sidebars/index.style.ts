@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.section`
-  width: 200px;
+  width: 250px;
   height: 100vh;
   background-color: #f0f0f0;
 `;

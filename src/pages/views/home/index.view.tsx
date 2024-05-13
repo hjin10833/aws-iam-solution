@@ -40,7 +40,7 @@ const HomePage = () => {
         {/* 탭 */}
 
         <Stack spacing={6} padding={4} paddingLeft={8} paddingRight={8}>
-          <Flex>
+          <Flex flexWrap="wrap">
             <Button size={"sm"} fontWeight={400} background={"white"}>
               사용자 엑세스키 미교체
             </Button>

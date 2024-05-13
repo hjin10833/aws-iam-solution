@@ -11,7 +11,7 @@ const MainHeader = () => {
           <LogoIcon />
         </Header.Logo>
         <Header.Ul>
-          <Header.Li>전혜진</Header.Li>
+          <Header.Li>사용자명</Header.Li>
         </Header.Ul>
       </Header.Gnb>
     </Header.Container>

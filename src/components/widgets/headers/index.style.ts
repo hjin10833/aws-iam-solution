@@ -18,10 +18,14 @@ export const Gnb = styled.nav`
 
 export const Ul = styled.ul`
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 16px;
 `;
 
-export const Li = styled.li``;
+export const Li = styled.li`
+  font-size: 16px;
+`;
 
 export const Logo = styled.div`
   width: 100px;
