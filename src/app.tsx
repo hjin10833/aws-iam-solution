@@ -1,14 +1,15 @@
 import { Suspense } from "react";
 import { BaseUIProvider, RouterProvider } from "./app/providers";
+import { SpinnerLoading } from "./components/atoms";
 
 function App() {
   return (
     <>
-      <Suspense fallback={<div>로딩중...</div>}>
-        <BaseUIProvider>
+      <BaseUIProvider>
+        <Suspense fallback={<SpinnerLoading />}>
           <RouterProvider />
-        </BaseUIProvider>
-      </Suspense>
+        </Suspense>
+      </BaseUIProvider>
     </>
   );
 }

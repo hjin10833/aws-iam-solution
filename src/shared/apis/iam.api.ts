@@ -27,8 +27,11 @@ const iamApis = {
     }
   },
 
-  getUserOldAccesskey: async () => {
+  getUserOldAccesskey: async (loading: () => void | undefined) => {
     try {
+      if (loading && typeof loading === "function") {
+        loading();
+      }
       const response = await privateClient.get(iamApiRoutes.getIam("get_user_old_accesskey"));
       return response;
     } catch (error) {
@@ -37,8 +40,11 @@ const iamApis = {
     }
   },
   /** GET USER UNUSED Accesskey*/
-  getUserUnusedAccessKey: async () => {
+  getUserUnusedAccessKey: async (loading: () => void | undefined) => {
     try {
+      if (loading && typeof loading === "function") {
+        loading();
+      }
       const response = await privateClient.get(iamApiRoutes.getIam("get_user_unused_accesskey"));
       return response;
     } catch (error) {
@@ -46,8 +52,11 @@ const iamApis = {
       return { error: { code, message } };
     }
   },
-  getUserMultipleAccesskey: async () => {
+  getUserMultipleAccesskey: async (loading: () => void | undefined) => {
     try {
+      if (loading && typeof loading === "function") {
+        loading();
+      }
       const response = await privateClient.get(iamApiRoutes.getIam(" get_user_multiple_accesskey"));
       return response;
     } catch (error) {
@@ -55,9 +64,36 @@ const iamApis = {
       return { error: { code, message } };
     }
   },
-  getCheckPasswordPolicy: async () => {
+  getCheckPasswordPolicy: async (loading: () => void | undefined) => {
     try {
+      if (loading && typeof loading === "function") {
+        loading();
+      }
       const response = await privateClient.get(iamApiRoutes.getIam("check_password_policy"));
+      return response;
+    } catch (error) {
+      const { code, message } = handleError(error);
+      return { error: { code, message } };
+    }
+  },
+  getUserWithoutPolicy: async (loading: () => void | undefined) => {
+    try {
+      if (loading && typeof loading === "function") {
+        loading();
+      }
+      const response = await privateClient.get(iamApiRoutes.getIam("get_user_without_policy"));
+      return response;
+    } catch (error) {
+      const { code, message } = handleError(error);
+      return { error: { code, message } };
+    }
+  },
+  getInactiveUser: async (loading: () => void | undefined) => {
+    try {
+      if (loading && typeof loading === "function") {
+        loading();
+      }
+      const response = await privateClient.get(iamApiRoutes.getIam("get_inactive_user"));
       return response;
     } catch (error) {
       const { code, message } = handleError(error);

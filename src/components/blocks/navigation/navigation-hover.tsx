@@ -6,7 +6,7 @@ const NavigationHover = ({ title, icon, description }) => {
     <>
       <Flex
         pos="absolute"
-        mt="calc(100px - 7.5px)"
+        mt="calc(150px - 7.5px)"
         ml="-10px"
         width={0}
         height={0}

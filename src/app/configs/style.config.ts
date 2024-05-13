@@ -21,9 +21,9 @@ const globalStyle = (theme: Theme) => css`
 
   #root {
     padding: 8px;
+    width: 100vw;
     max-width: 100vw;
     gap: 16px;
-    /* margin: 0 auto; */
   }
   h1,
   h2,

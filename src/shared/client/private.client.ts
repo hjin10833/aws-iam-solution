@@ -2,6 +2,7 @@ import axios from "axios";
 
 const basePath = import.meta.env.VITE_ENV_BASE_URL;
 const token = import.meta.env.VITE_TOKEN;
+
 const privateClient = axios.create({
   baseURL: basePath,
 });
@@ -16,7 +17,7 @@ privateClient.interceptors.request.use(
       headers: {
         "Content-type": "application/json;charset=UTF-8",
         "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${String(token)}`,
+        Authorization: `Bearer 123`,
       },
     };
   },
