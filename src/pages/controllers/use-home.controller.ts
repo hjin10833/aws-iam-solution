@@ -53,7 +53,7 @@ export default function useHomeController() {
     loading,
     error,
 
-    userWithoutGroupList: list.userWithoutGroupList,
-    getUserOldAccesskey: list.getUserOldAccesskey,
+    userWithoutGroupList: list.userWithoutGroupList as UserDTO[],
+    getUserOldAccesskey: list.getUserOldAccesskey as UserDTO[],
   };
 }
