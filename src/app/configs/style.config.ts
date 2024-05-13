@@ -20,7 +20,8 @@ const globalStyle = (theme: Theme) => css`
   }
 
   #root {
-    max-width: 1200px;
+    padding: 8px;
+    max-width: 100vw;
     gap: 16px;
     /* margin: 0 auto; */
   }
