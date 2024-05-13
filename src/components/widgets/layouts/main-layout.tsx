@@ -5,24 +5,27 @@ import { Flex } from "@chakra-ui/react";
 /** ============== Inner ============ */
 import MainHeader from "../headers/main-header";
 import MainFooter from "../footers/main-footer";
-import MainSideBar from "../sidebars/main-sidebar";
-import CustomSidebar from "../sidebars/custom-sidebar";
+import Sidebar from "../sidebars/sidebar";
+
+import * as Styled from "./index.style";
 
 const MainLayout = () => {
   return (
     <>
+      {/* 헤더 */}
       <MainHeader />
-      <div style={{ height: "80px" }} />
-
+      {/* 헤더 */}
+      <Styled.Empty />
       <Flex>
-        <CustomSidebar />
-
-        {/* <MainSideBar /> */}
-        <main style={{ width: "100%" }}>
+        {/* 사이드바 */}
+        <Styled.LeftSideSection>
+          <Sidebar />
+        </Styled.LeftSideSection>
+        {/* 사이드바 */}
+        <Styled.Main>
           <Outlet />
-        </main>
+        </Styled.Main>
       </Flex>
-      {/* <MainFooter /> */}
     </>
   );
 };

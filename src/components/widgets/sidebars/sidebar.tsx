@@ -12,7 +12,7 @@ const CustomSidebar = () => {
     <Flex
       pos="sticky"
       left="5"
-      h="95vh"
+      h="100vh"
       marginTop="2.5vh"
       boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
       borderRadius={navSize == "small" ? "15px" : "30px"}
@@ -35,18 +35,18 @@ const CustomSidebar = () => {
         <NavigationItem navSize={navSize} icon={FiHome} title="IAM" description="This is the description for the IAM dashboard." />
       </Flex>
 
-      <Flex p="5%" flexDir="column" w="100%" alignItems={navSize == "small" ? "center" : "flex-start"} mb={4}>
+      {/* <Flex p="5%" flexDir="column" w="100%" alignItems={navSize == "small" ? "center" : "flex-start"} mb={4}>
         <Divider display={navSize == "small" ? "none" : "flex"} />
         <Flex mt={4} align="center">
           <Avatar size="sm" src="avatar-1.jpg" />
           <Flex flexDir="column" ml={4} display={navSize == "small" ? "none" : "flex"}>
             <Heading as="h3" size="sm">
-              Sylwia Weller
+              JHJ
             </Heading>
             <Text color="gray">Admin</Text>
           </Flex>
         </Flex>
-      </Flex>
+      </Flex> */}
     </Flex>
   );
 };
