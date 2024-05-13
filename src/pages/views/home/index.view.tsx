@@ -69,13 +69,13 @@ const HomePage = () => {
 
       {/* 테이블 */}
       <Styled.Section>
-        <Stack spacing={6} padding={8}>
-          <TableContainer background={"white"}>
+        <Stack spacing={6} padding={8} direction="row" align="stretch">
+          <TableContainer background={"white"} flex="1">
             <Table variant="simple">
               <Thead background={"ButtonFace"}>
                 <Tr>
-                  <Th>userName</Th>
-                  <Th>Arn</Th>
+                  <Th style={{ maxWidth: "200px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>userName</Th>
+                  <Th style={{ maxWidth: "200px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>Arn</Th>
                 </Tr>
               </Thead>
               {/* 테이블 바디 */}

@@ -1,14 +1,17 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.section`
-  width: 250px;
+  width: 200px;
+  max-width: 250px;
+  min-width: 200px;
   height: 100vh;
-  background-color: #f0f0f0;
 `;
 
 export const Gnb = styled.nav`
+  width: 100%;
   height: 100%;
   padding: 8px;
+  box-sizing: border-box;
 `;
 
 export const Ul = styled.ul`
