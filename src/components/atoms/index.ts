@@ -1,4 +1,7 @@
-/**로고 */
+/** 아바타 */
+export { default as CustomAvatar } from "./avatar/avatar";
+
+/** 아이콘 */
 export { LogoIcon } from "./icons/index";
 
 /** 버튼 */

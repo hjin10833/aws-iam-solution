@@ -1,7 +1,7 @@
 import React from "react";
 
 import * as Header from "./index.style";
-import { LogoIcon } from "@/components/atoms";
+import { CustomAvatar, LogoIcon } from "@/components/atoms";
 
 const MainHeader = () => {
   return (
@@ -12,7 +12,9 @@ const MainHeader = () => {
             <LogoIcon />
           </Header.Logo>
           <Header.Ul>
-            <Header.Li>사용자명</Header.Li>
+            <Header.Li>
+              <CustomAvatar name="jhj" />
+            </Header.Li>
           </Header.Ul>
         </Header.Gnb>
       </Header.Container>
