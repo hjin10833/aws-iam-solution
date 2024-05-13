@@ -6,6 +6,7 @@ import { Flex } from "@chakra-ui/react";
 import MainHeader from "../headers/main-header";
 import MainFooter from "../footers/main-footer";
 import MainSideBar from "../sidebars/main-sidebar";
+import CustomSidebar from "../sidebars/custom-sidebar";
 
 const MainLayout = () => {
   return (
@@ -14,8 +15,12 @@ const MainLayout = () => {
       <div style={{ height: "80px" }} />
 
       <Flex>
-        <MainSideBar />
-        <Outlet />
+        <CustomSidebar />
+
+        {/* <MainSideBar /> */}
+        <main style={{ width: "100%" }}>
+          <Outlet />
+        </main>
       </Flex>
       {/* <MainFooter /> */}
     </>
