@@ -4,27 +4,41 @@ import { iamApis } from "@/shared/apis";
 import { UserDTO } from "@/entities/user/user.dto";
 import { useMultiState } from "@/shared/hooks";
 
-// UserDTO[]
+enum STATE_KEY {
+  USER_WITHOUT_GROUP_LIST = "userWithoutGroupList",
+  GET_USER_OLD_ACCESS_KEY = "getUserOldAccesskey",
+}
+
 export default function useHomeController() {
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<Error | null>(null);
+
   const [list, dispatchList] = useMultiState({
     userWithoutGroupList: [],
     getUserOldAccesskey: [],
   });
 
-  const setList = (name: string, value: unknown) => dispatchList({ name: name, value: value });
+  const setList = (name: STATE_KEY, value: unknown) => dispatchList({ name, value });
+
+  const startLoading = () => setLoading(true);
+
+  const endLoading = () => setLoading(false);
 
   const onGetListUsersWithoutGroup = () => {
     return iamApis
-      .getUserWithoutGroup()
-      .then((data) => setList("userWithoutGroupList", data))
-      .catch(console.error);
+      .getUserWithoutGroup(startLoading)
+      .then((data) => {
+        setList(STATE_KEY.USER_WITHOUT_GROUP_LIST, data);
+        endLoading();
+      })
+      .catch((error) => setError(error));
   };
 
   const onGetUserOldAccesskey = () => {
-    iamApis
+    return iamApis
       .getUserOldAccesskey()
-      .then((data) => setList("getUserOldAccesskey", data))
-      .catch(console.error);
+      .then((data) => setList(STATE_KEY.GET_USER_OLD_ACCESS_KEY, data))
+      .catch((error) => setError(error));
   };
 
   React.useEffect(() => {
@@ -35,5 +49,11 @@ export default function useHomeController() {
     onGetUserOldAccesskey();
   }, []);
 
-  return { userWithoutGroupList: list.userWithoutGroupList };
+  return {
+    loading,
+    error,
+
+    userWithoutGroupList: list.userWithoutGroupList,
+    getUserOldAccesskey: list.getUserOldAccesskey,
+  };
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Flex, Heading, Stack } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Spinner, Stack } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer } from "@chakra-ui/react";
 
 // Controller
@@ -12,9 +12,10 @@ import { UserDTO } from "@/entities/user/user.dto";
 import { SubMenuButton } from "@/components/atoms";
 
 const HomePage = () => {
-  const { userWithoutGroupList } = useHomeController();
+  const { loading, userWithoutGroupList } = useHomeController();
 
-  console.log("여기", userWithoutGroupList);
+  console.log(loading);
+
   return (
     <Styled.Container>
       {/* 헤더 */}
@@ -58,24 +59,30 @@ const HomePage = () => {
       <Styled.Section>
         <Stack spacing={6} padding={8} direction="row" align="stretch">
           <TableContainer background={"white"} flex="1">
-            <Table variant="simple" size="sm">
-              <Thead background={"ButtonFace"}>
-                <Tr>
-                  <Th style={{ maxWidth: "200px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>userName</Th>
-                  <Th style={{ maxWidth: "200px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>Arn</Th>
-                </Tr>
-              </Thead>
-              {/* 테이블 바디 */}
-              <Tbody>
-                {userWithoutGroupList.map((data: UserDTO, index: number) => (
-                  <Tr key={index}>
-                    <Td>{data.UserName}</Td>
-                    <Td>{data.Arn}</Td>
+            {loading ? (
+              <div style={{ display: "flex", flex: 1, justifyContent: "center", alignItems: "center" }}>
+                <Spinner />
+              </div>
+            ) : (
+              <Table variant="simple" size="sm">
+                <Thead background={"ButtonFace"}>
+                  <Tr>
+                    <Th style={{ maxWidth: "200px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>userName</Th>
+                    <Th style={{ maxWidth: "200px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>Arn</Th>
                   </Tr>
-                ))}
-              </Tbody>
-              {/* 테이블 바디 */}
-            </Table>
+                </Thead>
+                {/* 테이블 바디 */}
+                <Tbody>
+                  {userWithoutGroupList.map((data: UserDTO, index: number) => (
+                    <Tr key={index}>
+                      <Td>{data.UserName}</Td>
+                      <Td>{data.Arn}</Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+                {/* 테이블 바디 */}
+              </Table>
+            )}
           </TableContainer>
         </Stack>
       </Styled.Section>
