@@ -73,7 +73,7 @@ const HomePage = () => {
                 </Thead>
                 {/* 테이블 바디 */}
                 <Tbody>
-                  {userWithoutGroupList.map((data: UserDTO, index: number) => (
+                  {userWithoutGroupList?.map((data: UserDTO, index: number) => (
                     <Tr key={index}>
                       <Td>{data.UserName}</Td>
                       <Td>{data.Arn}</Td>
