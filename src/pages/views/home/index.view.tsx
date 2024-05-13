@@ -9,6 +9,7 @@ import DefaultTable from "@/components/blocks/table/table";
 
 import * as Styled from "./index.style";
 import { UserDTO } from "@/entities/user/user.dto";
+import { SubMenuButton } from "@/components/atoms";
 
 const HomePage = () => {
   const { userWithoutGroupList } = useHomeController();
@@ -40,28 +41,14 @@ const HomePage = () => {
         {/* 탭 */}
 
         <Stack spacing={6} padding={4} paddingLeft={8} paddingRight={8}>
-          <Flex flexWrap="wrap">
-            <Button size={"sm"} fontWeight={400} background={"white"}>
-              사용자 엑세스키 미교체
-            </Button>
-            <Button size={"sm"} fontWeight={400} background={"white"}>
-              사용자 미사용 액세스키
-            </Button>
-            <Button size={"sm"} fontWeight={400} background={"white"}>
-              사용자 액세스키 2개 이상
-            </Button>
-            <Button size={"sm"} fontWeight={400} background={"white"}>
-              접속하지 않은 사용자
-            </Button>
-            <Button size={"sm"} fontWeight={400} background={"white"}>
-              장기 미접속 사용자
-            </Button>
-            <Button size={"sm"} fontWeight={400} background={"white"}>
-              연결된 정책이 없는 사용잔
-            </Button>
-            <Button size={"sm"} fontWeight={400} background={"white"}>
-              그룹에 속하지 않은 사용자
-            </Button>
+          <Flex flexWrap="wrap" gap={4}>
+            <SubMenuButton title="그룹에 속하지 않은 사용자" />
+            <SubMenuButton title="그사용자 엑세스키 미교체" />
+            <SubMenuButton title="사용자 미사용 액세스키" />
+            <SubMenuButton title="사용자 액세스키 2개 이상" />
+            <SubMenuButton title="접속하지 않은 사용자" />
+            <SubMenuButton title="장기 미접속 사용자" />
+            <SubMenuButton title="연결된 정책이 없는 사용자" />
           </Flex>
         </Stack>
       </Styled.Section>
@@ -71,7 +58,7 @@ const HomePage = () => {
       <Styled.Section>
         <Stack spacing={6} padding={8} direction="row" align="stretch">
           <TableContainer background={"white"} flex="1">
-            <Table variant="simple">
+            <Table variant="simple" size="sm">
               <Thead background={"ButtonFace"}>
                 <Tr>
                   <Th style={{ maxWidth: "200px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>userName</Th>
