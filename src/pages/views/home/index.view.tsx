@@ -13,6 +13,7 @@ import { isEmptyArrayHelper } from "@/shared/helpers";
 const HomePage = () => {
   const { loading, userWithoutGroupList } = useHomeController();
 
+  console.log(userWithoutGroupList);
   return (
     <Styled.Container>
       {/* 헤더 */}

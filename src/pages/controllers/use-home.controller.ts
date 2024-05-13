@@ -14,8 +14,8 @@ export default function useHomeController() {
   const [error, setError] = React.useState<Error | null>(null);
 
   const [list, dispatchList] = useMultiState({
-    userWithoutGroupList: [],
-    getUserOldAccesskey: [],
+    userWithoutGroupList: [{ Arn: "", UserName: "" }],
+    getUserOldAccesskey: [{ Arn: "", UserName: "" }],
   });
 
   const setList = (name: STATE_KEY, value: unknown) => dispatchList({ name, value });
