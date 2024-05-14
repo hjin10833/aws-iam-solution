@@ -1,10 +1,18 @@
-import React, { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import { Divider, Flex, Heading, Spinner, Stack } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Th, Td, TableContainer } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 
+/** ============================================================
+ *
+ *  ============================================================
+ */
+
+// Entities
 import { UserDTO } from "@/entities/user/user.dto";
+// Shared
 import { isEmptyArrayHelper } from "@/shared/helpers";
+// Components
 import { SubMenu } from "@/components/blocks";
 
 const Container = styled.div`
@@ -41,7 +49,7 @@ type Props = {
   error?: Error | null;
 };
 
-const IAMUserContainer: React.FC<PropsWithChildren<Props>> = ({ description = "", menuName = "", list, loading = false, error = null }) => {
+const IAMUserContainer = ({ description = "", menuName = "", list, loading = false, error = null }: PropsWithChildren<Props>) => {
   return (
     <>
       <Container>
@@ -111,7 +119,6 @@ const IAMUserContainer: React.FC<PropsWithChildren<Props>> = ({ description = ""
         </Section>
         {/* 테이블 */}
       </Container>
-      );
     </>
   );
 };

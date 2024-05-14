@@ -2,10 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Avatar } from "@chakra-ui/react";
 
-// ======
+/** ============================================================
+ *
+ *  ============================================================
+ */
 
-import * as HeaderStyled from "./index.style";
+// Components
 import { LogoIcon } from "@/components/atoms";
+
+// Style
+import * as HeaderStyled from "./index.style";
 
 const Header = () => {
   return (

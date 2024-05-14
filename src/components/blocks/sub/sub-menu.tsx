@@ -1,8 +1,16 @@
 import React, { useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Divider, Flex, Stack } from "@chakra-ui/react";
-// ======================
+
+/** ============================================================
+ *
+ *  ============================================================
+ */
+
+// Configs
 import pageUrlConfig from "@/app/configs/pageUrl.config";
+
+// Components
 import { SubMenuButton } from "@/components/atoms";
 
 type MiddleMenu = "user" | "group";

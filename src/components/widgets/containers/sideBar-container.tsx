@@ -1,5 +1,11 @@
 import React from "react";
 import styled from "@emotion/styled";
+
+/** ============================================================
+ *
+ *  ============================================================
+ */
+
 import { SideBar } from "@/components/blocks";
 
 const SideBarContainer = () => {

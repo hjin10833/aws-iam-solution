@@ -2,9 +2,16 @@ import React from "react";
 import { Flex, Text, IconButton, Divider, Avatar, Heading } from "@chakra-ui/react";
 import { FiMenu, FiHome, FiUser, FiSettings } from "react-icons/fi";
 
+/** ============================================================
+ *
+ *  ============================================================
+ */
+
+// Components
 import { NavigationItem } from "@/components/blocks";
 
-type NavigationSize = "large" | "small";
+// Types
+import { NavigationSize } from "@/shared/types";
 
 function navSizeChecker(size: NavigationSize) {
   return size === "small";

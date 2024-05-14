@@ -1,6 +1,6 @@
 import pageUrlConfig from "@/app/configs/pageUrl.config";
 
-export const iamUserURL = {
+const IAM_USER_URL = {
   withoutGroup: `${pageUrlConfig.iam}${pageUrlConfig.user}/withoutGroup`,
   oldAccessKey: `${pageUrlConfig.iam}${pageUrlConfig.user}/oldAccessKey`,
   unusedAccessKey: `${pageUrlConfig.iam}${pageUrlConfig.user}/unusedAccessKey`,
@@ -9,3 +9,5 @@ export const iamUserURL = {
   getInactiveUser: `${pageUrlConfig.iam}${pageUrlConfig.user}/getInactiveUser`,
   withoutPolicy: `${pageUrlConfig.iam}${pageUrlConfig.user}/withoutPolicy`,
 };
+
+export default { IAM_USER_URL };

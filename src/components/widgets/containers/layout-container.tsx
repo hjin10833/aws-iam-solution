@@ -1,13 +1,15 @@
 import React from "react";
-import styled from "@emotion/styled";
-
 import { Outlet } from "react-router-dom";
 import { Flex } from "@chakra-ui/react";
 
-/** ============== Inner ============ */
+/** ============================================================
+ *
+ *  ============================================================
+ */
 
-import SideBarContainer from "./sideBar-container";
+// Components
 import { Header } from "@/components/blocks";
+import { SideBarContainer } from "@/components/widgets";
 
 const LayoutContainer = () => {
   return (

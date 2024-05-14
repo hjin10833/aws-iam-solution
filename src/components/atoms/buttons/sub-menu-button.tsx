@@ -1,6 +1,12 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "@chakra-ui/react";
+
+/** ============================================================
+ *
+ *  ============================================================
+ */
+
 type Props = {
   size?: "sm" | "md" | "lg";
   title: string;

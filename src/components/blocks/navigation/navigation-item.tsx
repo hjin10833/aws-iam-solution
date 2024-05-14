@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Flex, Text, Icon, Link, Menu, MenuButton, MenuList } from "@chakra-ui/react";
-import NavHoverBox from "./navigation-hover";
+import { Flex, Text, Icon, Menu, MenuButton } from "@chakra-ui/react";
 
 const NavigationItem = ({ href, icon, title, description = "", active = false, navSize }) => {
   const navigation = useNavigate();
