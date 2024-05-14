@@ -1,104 +1,24 @@
 import privateClient from "../client/private.client";
-import { handleError } from "./utils/helper";
+
+import handler from "./utils/handler";
+import { Loading } from "./utils/type";
 
 const iamApiRoutes = {
   getIam: (param: string) => `/iam?type=${param}`,
 };
-const iamApis = {
-  getIam: async (type: string) => {
-    try {
-      const response = await privateClient.get(iamApiRoutes.getIam(type));
-      return response;
-    } catch (error) {
-      const { code, message } = handleError(error);
-      return { error: { code, message } };
-    }
-  },
-  getUserWithoutGroup: async (loading: () => void | undefined) => {
-    try {
-      if (loading && typeof loading === "function") {
-        loading();
-      }
-      const response = await privateClient.get(iamApiRoutes.getIam("get_user_without_group"));
-      return response;
-    } catch (error) {
-      const { code, message } = handleError(error);
-      return { error: { code, message } };
-    }
-  },
 
-  getUserOldAccesskey: async (loading: () => void | undefined) => {
-    try {
-      if (loading && typeof loading === "function") {
-        loading();
-      }
-      const response = await privateClient.get(iamApiRoutes.getIam("get_user_old_accesskey"));
-      return response;
-    } catch (error) {
-      const { code, message } = handleError(error);
-      return { error: { code, message } };
-    }
-  },
-  /** GET USER UNUSED Accesskey*/
-  getUserUnusedAccessKey: async (loading: () => void | undefined) => {
-    try {
-      if (loading && typeof loading === "function") {
-        loading();
-      }
-      const response = await privateClient.get(iamApiRoutes.getIam("get_user_unused_accesskey"));
-      return response;
-    } catch (error) {
-      const { code, message } = handleError(error);
-      return { error: { code, message } };
-    }
-  },
-  getUserMultipleAccesskey: async (loading: () => void | undefined) => {
-    try {
-      if (loading && typeof loading === "function") {
-        loading();
-      }
-      const response = await privateClient.get(iamApiRoutes.getIam(" get_user_multiple_accesskey"));
-      return response;
-    } catch (error) {
-      const { code, message } = handleError(error);
-      return { error: { code, message } };
-    }
-  },
-  getCheckPasswordPolicy: async (loading: () => void | undefined) => {
-    try {
-      if (loading && typeof loading === "function") {
-        loading();
-      }
-      const response = await privateClient.get(iamApiRoutes.getIam("check_password_policy"));
-      return response;
-    } catch (error) {
-      const { code, message } = handleError(error);
-      return { error: { code, message } };
-    }
-  },
-  getUserWithoutPolicy: async (loading: () => void | undefined) => {
-    try {
-      if (loading && typeof loading === "function") {
-        loading();
-      }
-      const response = await privateClient.get(iamApiRoutes.getIam("get_user_without_policy"));
-      return response;
-    } catch (error) {
-      const { code, message } = handleError(error);
-      return { error: { code, message } };
-    }
-  },
-  getInactiveUser: async (loading: () => void | undefined) => {
-    try {
-      if (loading && typeof loading === "function") {
-        loading();
-      }
-      const response = await privateClient.get(iamApiRoutes.getIam("get_inactive_user"));
-      return response;
-    } catch (error) {
-      const { code, message } = handleError(error);
-      return { error: { code, message } };
-    }
-  },
+const requestIamApi = async (endpoint: string, loading: Loading) => {
+  return handler.handleRequest(async () => privateClient.get(endpoint), loading);
+};
+
+const iamApis = {
+  getIam: async (type: string, loading: Loading) => requestIamApi(iamApiRoutes.getIam(type), loading),
+  getUserWithoutGroup: async (loading: Loading) => requestIamApi(iamApiRoutes.getIam("get_user_without_group"), loading),
+  getUserOldAccesskey: async (loading: Loading) => requestIamApi(iamApiRoutes.getIam("get_user_old_accesskey"), loading),
+  getUserUnusedAccessKey: async (loading: Loading) => requestIamApi(iamApiRoutes.getIam("get_user_unused_accesskey"), loading),
+  getUserMultipleAccesskey: async (loading: Loading) => requestIamApi(iamApiRoutes.getIam("get_user_multiple_accesskey"), loading),
+  getCheckPasswordPolicy: async (loading: Loading) => requestIamApi(iamApiRoutes.getIam("check_password_policy"), loading),
+  getUserWithoutPolicy: async (loading: Loading) => requestIamApi(iamApiRoutes.getIam("get_user_without_policy"), loading),
+  getInactiveUser: async (loading: Loading) => requestIamApi(iamApiRoutes.getIam("get_inactive_user"), loading),
 };
 export default iamApis;

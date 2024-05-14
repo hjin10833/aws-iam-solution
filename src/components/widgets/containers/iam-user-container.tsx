@@ -44,7 +44,7 @@ const LoadingWrapper = styled.div`
 type Props = {
   menuName: string;
   description: string;
-  list: UserDTO[];
+  list?: UserDTO[];
   loading?: boolean;
   error?: Error | null;
 };
@@ -94,7 +94,7 @@ const IAMUserContainer = ({ description = "", menuName = "", list, loading = fal
                     </Td>
                   )}
                   {!loading &&
-                    !isEmptyArrayHelper(list) &&
+                    !isEmptyArrayHelper(list!) &&
                     list?.map((data: UserDTO, index: number) => (
                       <Tr key={index}>
                         <Td>{data.UserName || "-"}</Td>
@@ -102,7 +102,7 @@ const IAMUserContainer = ({ description = "", menuName = "", list, loading = fal
                       </Tr>
                     ))}
 
-                  {!loading && isEmptyArrayHelper(list) && (
+                  {!loading && isEmptyArrayHelper(list!) && (
                     <Td colSpan={4}>
                       <LoadingWrapper>
                         <Heading as="h3" size={"md"} color={"#D62E2A"}>

@@ -13,7 +13,7 @@ import { IAMUserContainer } from "@/components/widgets";
 import { DEFAULT_DATA } from "@/shared/constants";
 
 const IAMUserPage = () => {
-  const { description, menuName, list, loading, error } = useIamUserController();
+  const { description, menuName, error, list, loading } = useIamUserController();
 
   // 에러 예외처리
   if (error) return <IAMUserContainer list={[DEFAULT_DATA.USER_DTO]} loading={loading} error={error} menuName={menuName} description={description} />;

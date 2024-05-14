@@ -1,9 +1,5 @@
 import axios, { AxiosError } from "axios";
-
-export type ApiError = {
-  code: number;
-  message: string;
-};
+import type { ApiError, Loading, RequestFunction } from "./type";
 
 export const handleError = (error: unknown): ApiError => {
   let errorCode: ApiError["code"];
@@ -21,3 +17,18 @@ export const handleError = (error: unknown): ApiError => {
   console.error("응답에서 에러가 발생하였습니다. : ", errorMsg);
   return { code: errorCode, message: errorMsg };
 };
+
+const handleRequest = async (requestFunction: RequestFunction, loading: Loading) => {
+  try {
+    if (loading && typeof loading === "function") {
+      loading();
+    }
+    const response = await requestFunction();
+    return response;
+  } catch (error) {
+    const { code, message } = handleError(error);
+    return { error: { code, message } };
+  }
+};
+
+export default { handleError, handleRequest };

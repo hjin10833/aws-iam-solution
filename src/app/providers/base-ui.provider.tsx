@@ -15,7 +15,6 @@ const BaseUIProvider = ({ children }: PropsWithChildren) => {
   return (
     <ChakraProvider>
       {children}
-
       <Global styles={globalStyle} />
     </ChakraProvider>
   );

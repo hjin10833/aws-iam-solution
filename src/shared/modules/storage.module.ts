@@ -16,7 +16,7 @@ function get(key: LocalStorageKey) {
 
     return parseJsonData(rawData);
   } catch (error) {
-    console.error('로컬 스토리지에서 데이터를 가져오는데 에러가 발생했습니다.:', error);
+    console.error("로컬 스토리지에서 데이터를 가져오는데 에러가 발생했습니다.:", error);
     return null;
   }
 }
@@ -32,7 +32,7 @@ function set<K extends LocalStorageKey, T>(key: K, value: T) {
     localStorage.setItem(key, stringifyJsonData(value));
     console.log(`${key}에 해당하는 데이터를 갱신했습니다.`);
   } catch (error) {
-    console.error('로컬 스토리지로 데이터를 보내는데 에러가 발생했습니다.:', error);
+    console.error("로컬 스토리지로 데이터를 보내는데 에러가 발생했습니다.:", error);
   }
 }
 
@@ -44,9 +44,9 @@ function _delete(key: LocalStorageKey) {
   try {
     assertKey(key);
     localStorage.removeItem(key);
-    console.log('데이터 삭제를 성공하였습니다.');
+    console.log("데이터 삭제를 성공하였습니다.");
   } catch (error) {
-    console.error('로컬 스토리지로부터 데이터를 삭제하는데 에러가 발생했습니다.:', error);
+    console.error("로컬 스토리지로부터 데이터를 삭제하는데 에러가 발생했습니다.:", error);
   }
 }
 
@@ -57,8 +57,8 @@ function _delete(key: LocalStorageKey) {
  * @throws {Error} - 키가 유효하지 않을 경우 에러를 throw 합니다.
  */
 function assertKey(key: LocalStorageKey): asserts key is LocalStorageKey {
-  if (typeof key !== 'string' || key.trim() === '') {
-    throw new Error('[Error 1 - Key가 유효하지 않습니다.] : 키가 비어 있습니다.');
+  if (typeof key !== "string" || key.trim() === "") {
+    throw new Error("[Error 1 - Key가 유효하지 않습니다.] : 키가 비어 있습니다.");
   }
 }
 
@@ -75,7 +75,7 @@ function assertKeyAndValue<K extends string, V>(key: K, value: V): asserts key i
 
   // 값이 없으면 에러를 throw
   if (!value) {
-    throw new Error('[Error 2 - value가 유효하지 않습니다.] : value must be a string.');
+    throw new Error("[Error 2 - value가 유효하지 않습니다.] : value must be a string.");
   }
 }
 
@@ -91,7 +91,7 @@ function parseJsonData(jsonString: string) {
     return parsedData;
   } catch (error) {
     // 에러 발생 시 에러를 콘솔에 출력하고 null 반환
-    console.error('JSON 파싱 에러:', error);
+    console.error("JSON 파싱 에러:", error);
     return null;
   }
 }
@@ -105,7 +105,7 @@ function parseJsonData(jsonString: string) {
 function stringifyJsonData<T>(data: T): string {
   // 데이터가 undefined 또는 null이면 에러를 throw
   if (data === undefined || data === null) {
-    throw new Error('[Error 3 - 데이터 갱신에 실패하였습니다.] : undefined or null.');
+    throw new Error("[Error 3 - 데이터 갱신에 실패하였습니다.] : undefined or null.");
   }
 
   // 주어진 데이터를 JSON 문자열로 변환하여 반환
@@ -114,7 +114,8 @@ function stringifyJsonData<T>(data: T): string {
 }
 
 // 기존 함수들을 사용하는 방식과 동일하게 동작하는 모듈 객체를 생성합니다.
-export const LocalStorageModule = {
+
+export default {
   get,
   set,
   delete: _delete,
